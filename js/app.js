@@ -16,7 +16,9 @@ let items = [
     'paper-plane-o',
     'cube'
 ];
-
+let openCards = [];
+let counter = 0;
+$('.moves').text(counter);
 let shuffledItems = shuffle(items);
 let deck = $('.deck');
 shuffledItems.forEach(function(element) {
@@ -41,9 +43,41 @@ function shuffle(array) {
 let cards = $('.card');
 cards.each(function(index){
     this.addEventListener('click',function(e){
-        $(this).addClass('open show');
+        if($(this).hasClass('match')==false){
+            countMoves();
+            displayCard($(this));
+            if(openCards.length>1){
+                if(openCards[0].children().attr("class") === openCards[1].children().attr("class")){
+                    freezCards();
+                }else{
+                    closeCards();
+                }
+            }
+        }
     });
 });
+
+function displayCard(element){
+    element.addClass('open show');
+    openCards.push(element);
+}
+function freezCards(){
+    openCards.forEach(function(element) {
+        element.removeClass('open show');
+        element.addClass('match');   
+    });
+    openCards = [];
+}
+function closeCards(){
+    openCards.forEach(function(element) {
+        element.removeClass('open show');
+    });
+    openCards = [];
+}
+function countMoves(){
+    counter++;
+    $('.moves').text(counter);
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
