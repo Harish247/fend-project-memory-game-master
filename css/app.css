@@ -106,6 +106,7 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+    color: #CEA120;
 }
 
 .score-panel .restart {
