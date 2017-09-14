@@ -72,10 +72,8 @@ h1 {
     cursor: default;
 }
 
-.close {
-    transform: rotateY(180deg);
-    transition: 0.3s;
-    background: #2e3d49;
+.deck .card.incorrect {
+    background: #BF2626;
 }
 
 .deck .card.show {

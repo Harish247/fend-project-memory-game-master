@@ -43,7 +43,7 @@ function shuffle(array) {
 let cards = $('.card');
 cards.each(function(index){
     this.addEventListener('click',function(e){
-        if($(this).hasClass('match')==false){
+        if($(this).hasClass('match')==false && $(this).hasClass('open show')==false){
             countMoves();
             displayCard($(this));
             if(openCards.length>1){
@@ -70,7 +70,10 @@ function freezCards(){
 }
 function closeCards(){
     openCards.forEach(function(element) {
-        element.removeClass('open show');
+        element.addClass('incorrect');
+        setTimeout(function(){
+            element.removeClass('open show incorrect');
+        },800);
     });
     openCards = [];
 }
