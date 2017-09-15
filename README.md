@@ -4,16 +4,16 @@ Memory Game is matching cards game. The deck will have 16 cards in pairs. When p
 
 ## Repo Structure
 |
-|--css                                                                               
-|   |--app.css     
-|--img     
-|   |--geometry2.png    
-|--js      
-|   |--app.js        
-|--sounds                 
-|   |-- music.mp3                    
-|--index.html                       
-|--README.md                                    
+|--css
+|   |--app.css
+|--img
+|   |--geometry2.png
+|--js
+|   |--app.js
+|--sounds
+|   |-- music.mp3
+|--index.html
+|--README.md
 
 ## To Play 
 
