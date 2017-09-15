@@ -28,6 +28,14 @@ body {
     flex-direction: column;
 }
 
+#result-container {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -112,4 +120,10 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+#play-again {
+    background: green;
+    height: 25px;
+    width: 100px;
 }

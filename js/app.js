@@ -21,11 +21,11 @@ let counter = 0;
 $('.moves').text(counter);
 let shuffledItems = shuffle(items);
 let deck = $('.deck');
-let stars = $('.fa.fa-star');
 let starCount = 3;
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -37,83 +37,126 @@ function shuffle(array) {
 
     return array;
 }
-function displayCard(element){
+
+/**
+ * @description show the cars, stores the element in openCards array
+ * @param {web element} element 
+ */
+function displayCard(element) {
     element.addClass('open show');
     openCards.push(element);
 }
-function freezCards(){
+
+/**
+ * @description freeze cards when two cards matched
+ */
+function freezCards() {
     openCards.forEach(function(element) {
         element.removeClass('open show');
-        element.addClass('match');   
+        element.addClass('match');
     });
     openCards = [];
-    if($('.match').length == 16){
+    if ($('.match').length == 16) {
         displayResult();
     }
 }
-function closeCards(){
+
+/**
+ * @description close the cards if the cards do not match
+ */
+function closeCards() {
     openCards.forEach(function(element) {
         element.addClass('incorrect');
-        setTimeout(function(){
+        setTimeout(function() {
             element.removeClass('open show incorrect');
-        },800);
+        }, 800);
     });
     openCards = [];
 }
-function countMoves(){
+
+/**
+ * @description count the moves and update moves to html
+ */
+function countMoves() {
     counter++;
     $('.moves').text(counter);
 }
-$('.restart').click(function(e){
+
+/**
+ * call the init function for click on restart.
+ */
+$('.restart').click(function(e) {
     init();
 });
-function adjustStars(){
-    if(counter<25){
+
+/**
+ * @description adjusting stars depends on moves
+ */
+function adjustStars() {
+    if (counter < 25) {
         starcount = 3;
-    }else if(counter<35){
-        $('#star3').css({'color':'#2B2727'});
+    } else if (counter < 35) {
+        $('#star3').css({
+            'color': '#2B2727'
+        });
         starCount = 2;
-    }else{
-        $('#star2').css({'color':'#2B2727'});
+    } else {
+        $('#star2').css({
+            'color': '#2B2727'
+        });
         starCount = 1;
     }
 }
-function displayResult(){
+
+/**
+ * @description display the results after the game won. call init function for click on play again
+ */
+function displayResult() {
     $('.container').hide();
     let result = $('<div id="result-container" align="center"></div>');
     $('body').append(result);
     $('#result-container').append('<h3>Congratulations! You have won!</h3>');
     $('#result-container').append(`with ${counter} moves and ${starCount} stars.</br>`);
     $('#result-container').append('<input type="button" id="play-again" value="Play again!">');
-    $('#play-again').click(function(e){
+    $('#play-again').click(function(e) {
         $('#result-container').remove();
         $('.container').show();
         init();
     });
 }
-function init(){
+
+/**
+ * @description adding listeners to the cards and calling different functions.
+ */
+function init() {
     openCards = [];
     counter = 0;
-    $('#star1').css({'color':'#CEA120'})
-    $('#star2').css({'color':'#CEA120'})
-    $('#star3').css({'color':'#CEA120'})
+    $('#star1').css({
+        'color': '#CEA120'
+    });
+    $('#star2').css({
+        'color': '#CEA120'
+    });
+    $('#star3').css({
+        'color': '#CEA120'
+    });
     $('.moves').text(counter);
-    $('.card').each(function(index){
+    $('.card').each(function(index) {
         $(this).remove();
     });
     shuffledItems.forEach(function(element) {
         deck.append(`<li class="card"><i class="fa fa-${element}"></i></li>`);
     });
-    $('.card').each(function(index){
-        this.addEventListener('click',function(e){
-            if($(this).hasClass('match')==false && $(this).hasClass('open show')==false){
+    $('.card').each(function(index) {
+        this.addEventListener('click', function(e) {
+            if ($(this).hasClass('match') == false && $(this).hasClass('open show') == false) {
                 countMoves();
                 adjustStars();
                 displayCard($(this));
-                if(openCards.length>1){
-                    if(openCards[0].children().attr("class") === openCards[1].children().attr("class")){
+                if (openCards.length > 1) {
+                    if (openCards[0].children().attr("class") === openCards[1].children().attr("class")) {
                         freezCards();
-                    }else{
+                    } else {
                         closeCards();
                     }
                 }

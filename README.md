@@ -1,20 +1,22 @@
 # Memory Game Project
 
-## Table of Contents
+Memory Game is matching cards game. The deck will have 16 cards in pairs. When player clicks on the card it will open. Player needs to click on the different card match with card already open. If the two open cards matches cards will freez, the player guess two different card they will close. Once player match all the cards players wins. Player will have unlimited moves. Player can refresh the game to start from the beginning. Player will be scored with stars and moves. Stars will be depending on the moves made by the player to match all cards. Player can play the game again by clicking again.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Repo Structure
+|
+|--css
+|   |--app.css
+|--img
+|   |--geometry2.png
+|--js
+|   |--app.js
+|--sounds
+|   |-- music.mp3
+|--index.html
+|--README.md
 
-## Instructions
+## To Play 
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+* Clone this repo
+* Double click on index.html
+* Game will open in the browser
