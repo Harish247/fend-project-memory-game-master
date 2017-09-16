@@ -22,6 +22,8 @@ $('.moves').text(counter);
 let shuffledItems = shuffle(items);
 let deck = $('.deck');
 let starCount = 3;
+let min = 0;
+let sec = 0;
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -38,6 +40,17 @@ function shuffle(array) {
     return array;
 }
 
+setInterval(function countTime(){
+    sec++;
+    if(sec == 60){
+        min++;
+        sec = 0;
+        $('#minutes').text(`${min} min`);
+        $('#seconds').text(`${sec} sec`);
+    }else{
+        $('#seconds').text(`${sec} sec`);
+    }
+},1000);
 /**
  * @description show the cars, stores the element in openCards array
  * @param {web element} element 
@@ -131,6 +144,8 @@ function displayResult() {
 function init() {
     openCards = [];
     counter = 0;
+    min = 0;
+    sec = 0;
     $('#star1').css({
         'color': '#CEA120'
     });
@@ -144,6 +159,8 @@ function init() {
     $('.card').each(function(index) {
         $(this).remove();
     });
+    $("#minutes").text(`${min} min`);
+    $("#seconds").text(`${sec} sec`);
     shuffledItems.forEach(function(element) {
         deck.append(`<li class="card"><i class="fa fa-${element}"></i></li>`);
     });
