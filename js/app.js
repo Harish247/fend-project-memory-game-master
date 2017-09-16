@@ -147,6 +147,7 @@ function init() {
     counter = 0;
     min = 0;
     sec = 0;
+    shuffledItems = shuffle(items);
     $('#star1').css({
         'color': '#CEA120'
     });
