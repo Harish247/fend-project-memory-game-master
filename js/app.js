@@ -125,11 +125,12 @@ function adjustStars() {
  * @description display the results after the game won. call init function for click on play again
  */
 function displayResult() {
+    let time = `${min} Minutes ${sec} Seconds`
     $('.container').hide();
     let result = $('<div id="result-container" align="center"></div>');
     $('body').append(result);
     $('#result-container').append('<h3>Congratulations! You have won!</h3>');
-    $('#result-container').append(`with ${counter} moves and ${starCount} stars.</br>`);
+    $('#result-container').append(`with ${counter} moves and ${starCount} stars in ${time}.</br>`);
     $('#result-container').append('<input type="button" id="play-again" value="Play again!">');
     $('#play-again').click(function(e) {
         $('#result-container').remove();
